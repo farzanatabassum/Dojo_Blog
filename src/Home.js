@@ -33,6 +33,8 @@ const [blogs,setBlogs]=useState([
             <button onClick={change}>State Change</button> */}
             {/* Multiple props in a component */}
             <BlogList blogs={blogs} title='All Blogs!!!'/>
+            {/* Re using components */}
+            <BlogList blogs={blogs.filter((blog)=>blog.author==='maria')} title="Maria's Blog"/>
         </div>
      );
 }
