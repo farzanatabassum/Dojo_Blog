@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import BlogList from './BlogList'
 
@@ -23,6 +24,14 @@ const [blogs,setBlogs]=useState([
     {title:'Welcome party!!!', body:'lorem ipsum...', author:"sadia", id:2},
     {title:'Web dev top tip', body:'lorem ipsum...', author:"maisha", id:3}
 ]);
+const handleClick=(id)=>{
+    const newBlog=blogs.filter((blog)=>blog.id!==id)
+    setBlogs(newBlog)
+}
+useEffect(()=>{
+    console.log('useEffect ran')
+    console.log(blogs)
+})
     return ( 
         <div className="home">
             {/* events */}
@@ -32,9 +41,9 @@ const [blogs,setBlogs]=useState([
             <p>{name} is {age} years old</p>
             <button onClick={change}>State Change</button> */}
             {/* Multiple props in a component */}
-            <BlogList blogs={blogs} title='All Blogs!!!'/>
+            <BlogList blogs={blogs} title='All Blogs!!!' handleClick={handleClick}/>
             {/* Re using components */}
-            <BlogList blogs={blogs.filter((blog)=>blog.author==='maria')} title="Maria's Blog"/>
+            {/* <BlogList blogs={blogs.filter((blog)=>blog.author==='maria')} title="Maria's Blog"/> */}
         </div>
      );
 }
